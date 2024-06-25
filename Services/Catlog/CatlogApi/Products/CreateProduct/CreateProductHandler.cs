@@ -1,20 +1,30 @@
-﻿using MediatR;
+﻿using BuildingBlocks.CQRS;
+using CatlogApi.Models;
 
 namespace CatlogApi.Products.CreateProduct
 {
-    public record CreateProductRequest(
+    public record CreateProductCommand(
         string Name,
         List<string> Category,
         string Description,
         string ImageFile,
-        decimal Price) : IRequest<CreateProductResponse>;
-    //Command
-    public record CreateProductResponse(Guid Id);//Result
-    internal class CreateProductHandler : IRequestHandler<CreateProductRequest, CreateProductResponse>
+        decimal Price) : ICommand<CreateProductResult>;
+
+    public record CreateProductResult(Guid Id);
+
+    internal class CreateProductHandler : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
-        public Task<CreateProductResponse> Handle(CreateProductRequest request, CancellationToken cancellationToken)
+        public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var product = new Product
+            {
+                Name = command.Name,
+                Category = command.Category,
+                Description = command.Description,
+                ImageFile = command.ImageFile,
+                Price = command.Price
+            };
+            return new CreateProductResult(Guid.NewGuid());
         }
     }
 }
