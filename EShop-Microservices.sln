@@ -7,7 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catlog", "Catlog", "{DBBC2BDF-8A28-433B-B8B1-719A8D015B32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatlogApi", "Services\Catlog\CatlogApi\CatlogApi.csproj", "{EA3BBE63-665B-43DF-9FD3-156F64D4CE64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatlogApi", "Services\Catlog\CatlogApi\CatlogApi.csproj", "{EA3BBE63-665B-43DF-9FD3-156F64D4CE64}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{8FF1F426-1EE8-485F-826F-B29BBAFBD9AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks", "BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj", "{31BE6341-03EC-49F4-94C2-C7DB649CE606}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +23,10 @@ Global
 		{EA3BBE63-665B-43DF-9FD3-156F64D4CE64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA3BBE63-665B-43DF-9FD3-156F64D4CE64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA3BBE63-665B-43DF-9FD3-156F64D4CE64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31BE6341-03EC-49F4-94C2-C7DB649CE606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31BE6341-03EC-49F4-94C2-C7DB649CE606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31BE6341-03EC-49F4-94C2-C7DB649CE606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31BE6341-03EC-49F4-94C2-C7DB649CE606}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -26,6 +34,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{DBBC2BDF-8A28-433B-B8B1-719A8D015B32} = {CA2881F0-0B67-467C-803F-A0CA3F877E9C}
 		{EA3BBE63-665B-43DF-9FD3-156F64D4CE64} = {DBBC2BDF-8A28-433B-B8B1-719A8D015B32}
+		{31BE6341-03EC-49F4-94C2-C7DB649CE606} = {8FF1F426-1EE8-485F-826F-B29BBAFBD9AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B33D2196-E005-4052-9025-08BA814395B4}
