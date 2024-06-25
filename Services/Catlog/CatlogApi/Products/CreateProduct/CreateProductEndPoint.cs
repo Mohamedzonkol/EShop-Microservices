@@ -1,5 +1,5 @@
 ﻿using BuildingBlocks.CQRS;
-using Carter;
+
 
 namespace CatlogApi.Products.CreateProduct
 {
@@ -15,7 +15,21 @@ namespace CatlogApi.Products.CreateProduct
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            throw new NotImplementedException();
+            app.MapPost("/products", async (CreateProductRequest req,
+                    ISender sender) =>
+                {
+                    var command = req.Adapt<CreateProductCommand>();
+                    var result = await sender.Send(command);
+                    var response = result.Adapt<CreateProductResponse>();
+                    return Results.Created($"/products/{response.Id}", response);
+
+                })
+                .WithName("CreateProducts")
+                .Produces<CreateProductResponse>(201)
+                .ProducesProblem(400)
+                .WithSummary("Create New Product")
+                .WithDescription("Create New Product With Minimal Api");
+
         }
     }
 }
