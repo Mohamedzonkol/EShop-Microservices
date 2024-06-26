@@ -1,7 +1,4 @@
-﻿using BuildingBlocks.CQRS;
-
-
-namespace CatlogApi.Products.CreateProduct
+﻿namespace CatlogApi.Products.CreateProduct
 {
     public record CreateProductRequest(
         string Name,

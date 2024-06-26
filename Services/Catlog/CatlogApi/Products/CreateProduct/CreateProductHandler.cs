@@ -1,7 +1,4 @@
-﻿using BuildingBlocks.CQRS;
-using CatlogApi.Models;
-
-namespace CatlogApi.Products.CreateProduct
+﻿namespace CatlogApi.Products.CreateProduct
 {
     public record CreateProductCommand(
         string Name,
@@ -12,7 +9,7 @@ namespace CatlogApi.Products.CreateProduct
 
     public record CreateProductResult(Guid Id);
 
-    internal class CreateProductHandler : ICommandHandler<CreateProductCommand, CreateProductResult>
+    internal class CreateProductHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
@@ -24,7 +21,11 @@ namespace CatlogApi.Products.CreateProduct
                 ImageFile = command.ImageFile,
                 Price = command.Price
             };
-            return new CreateProductResult(Guid.NewGuid());
+            //save product in DB
+            session.Store(product);
+            await session.SaveChangesAsync(cancellationToken);
+            //return result
+            return new CreateProductResult(product.Id);
         }
     }
 }
