@@ -20,7 +20,6 @@
     <Folder Include="Data\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Products\DeleteProduct\" />
-    <Folder Include="Products\GetProduct\" />
     <Folder Include="Products\UpdateProduct\" />
   </ItemGroup>
 

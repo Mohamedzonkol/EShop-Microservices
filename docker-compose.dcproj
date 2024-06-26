@@ -4,7 +4,7 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerPublishLocally>False</DockerPublishLocally>
-    <ProjectGuid>9d5b5e69-0fa2-41ac-af6e-b63950919fe8</ProjectGuid>
+    <ProjectGuid>20f419ed-0a2d-4833-9632-ae65e957f0e9</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>catlogapi</DockerServiceName>
