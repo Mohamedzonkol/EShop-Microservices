@@ -26,6 +26,7 @@
                 .WithName("UpdateProducts")
                 .Produces<UpdateProductResponse>(200)
                 .ProducesProblem(400)
+                .ProducesProblem(404)
                 .WithSummary("Update Product")
                 .WithDescription("Update Product With Minimal Api");
 

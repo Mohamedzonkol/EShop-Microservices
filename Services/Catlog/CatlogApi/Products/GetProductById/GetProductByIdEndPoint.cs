@@ -13,6 +13,7 @@
             }).WithName("GetProductById")
             .Produces<GetProductByIdResponse>(200)
                 .ProducesProblem(400)
+                .ProducesProblem(404)
                 .WithSummary("Get Product By Id")
                 .WithDescription("Get Product By Id With Minimal Api");
         }
