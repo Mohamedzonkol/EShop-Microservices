@@ -2,6 +2,8 @@ using BuildingBlocks.Behavior;
 using BuildingBlocks.Behavouir;
 using BuildingBlocks.Exceptions.Handler;
 using CatlogApi.Data;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 //Add services to the container.
@@ -26,7 +28,8 @@ if (builder.Environment.IsDevelopment())
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
-builder.Services.AddHealthChecks();
+builder.Services.AddHealthChecks()
+    .AddNpgSql(builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty);
 var app = builder.Build();
 
 //Pipeline
@@ -34,5 +37,9 @@ app.MapCarter();
 app.UseExceptionHandler(options =>
 {
 });
-app.UseHealthChecks("/health");
+app.UseHealthChecks("/health", new HealthCheckOptions
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
+    Predicate = _ => true,
+});
 app.Run();
