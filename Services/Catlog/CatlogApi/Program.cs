@@ -34,13 +34,14 @@ app.UseExceptionHandler(exceptionHandler =>
         {
             Title = exception.Message,
             Status = StatusCodes.Status500InternalServerError,
-            Detail = exception.StackTrace
+            Detail = exception.StackTrace,
+            Instance = context.Request.Path
         };
         var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
         logger.LogError(exception, exception.Message);
-        await context.Response.WriteAsJsonAsync(problemDetails);
         context.Response.StatusCode = StatusCodes.Status500InternalServerError;
         context.Response.ContentType = "application/json";
+        await context.Response.WriteAsJsonAsync(problemDetails);
     });
 });
 app.Run();
