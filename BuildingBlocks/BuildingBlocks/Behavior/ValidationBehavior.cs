@@ -3,8 +3,10 @@ using FluentValidation;
 using MediatR;
 namespace BuildingBlocks.Behavouir
 {
-    public class ValidationBehavior<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators)
-        : IPipelineBehavior<TRequest, TResponse> where TRequest : ICommand<TResponse> //Generic
+    public class ValidationBehavior<TRequest, TResponse>
+        (IEnumerable<IValidator<TRequest>> validators)
+        : IPipelineBehavior<TRequest, TResponse>
+        where TRequest : ICommand<TResponse>//Generic
     {
 
         public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
