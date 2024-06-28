@@ -1,6 +1,7 @@
 using BuildingBlocks.Behavior;
 using BuildingBlocks.Behavouir;
 using BuildingBlocks.Exceptions.Handler;
+using CatlogApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 //Add services to the container.
@@ -12,12 +13,19 @@ builder.Services.AddMediatR(config =>
     config.AddOpenBehavior(typeof(LoggingBehavior<,>));
 });
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+
 builder.Services.AddCarter();
+
 builder.Services.AddMarten(opt =>
 {
     opt.Connection(builder.Configuration.GetConnectionString("DefaultConnection")!);
 }).UseLightweightSessions();
+
+if (builder.Environment.IsDevelopment())
+    builder.Services.InitializeMartenWith<CatalogInitialData>();
+
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
 var app = builder.Build();
 
 //Pipeline
