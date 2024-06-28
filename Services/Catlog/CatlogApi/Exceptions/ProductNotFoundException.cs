@@ -1,4 +1,6 @@
-﻿namespace CatlogApi.Exceptions
+﻿using BuildingBlocks.Exception;
+
+namespace CatlogApi.Exceptions
 {
-    public class ProductNotFoundException() : Exception($"Product Not Found with Id ");
+    public class ProductNotFoundException(Guid id) : NotFoundException($"Product with id {id} was not found.");
 }

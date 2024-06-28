@@ -12,7 +12,7 @@
             if (product is null)
             {
                 logger.LogWarning("Product Not Found with Id {Id}", request.id);
-                throw new ProductNotFoundException();
+                throw new ProductNotFoundException(request.id);
             }
             return new GetProductByIdResult(product);
         }

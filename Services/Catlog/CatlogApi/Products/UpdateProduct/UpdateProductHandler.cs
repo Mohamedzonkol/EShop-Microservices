@@ -16,7 +16,7 @@
             logger.LogInformation("Update Product with {@Request}", request);
             var product = await session.LoadAsync<Product>(request.Id, cancellationToken);
             if (product is null)
-                throw new ProductNotFoundException();
+                throw new ProductNotFoundException(request.Id);
             product.Name = request.Name;
             product.Category = request.Category;
             product.Description = request.Description;

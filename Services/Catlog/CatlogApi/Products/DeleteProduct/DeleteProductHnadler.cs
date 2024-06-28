@@ -11,7 +11,7 @@
             if (product is null)
             {
                 logger.LogWarning("Product Not Found with Id {Id}", command.id);
-                throw new ProductNotFoundException();
+                throw new ProductNotFoundException(command.id);
             }
             session.Delete(product);
             await session.SaveChangesAsync(cancellationToken);
