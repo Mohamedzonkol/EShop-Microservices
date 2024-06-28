@@ -8,15 +8,15 @@
         string ImageFile,
         decimal Price) : ICommand<UpdateProductResult>;
     public record UpdateProductResult(bool isSuccess);
-    internal class UpdateProductHandler(IDocumentSession session, ILogger<UpdateProductHandler> logger)
+    internal class UpdateProductHandler(IDocumentSession session)
         : ICommandHandler<UpdateProductCommand, UpdateProductResult>
     {
         public async Task<UpdateProductResult> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            logger.LogInformation("Update Product with {@Request}", request);
+            // logger.LogInformation("Update Product with {@Request}", request);
             var product = await session.LoadAsync<Product>(request.Id, cancellationToken);
-            if (product is null)
-                throw new ProductNotFoundException(request.Id);
+            //if (product is null)
+            //    throw new ProductNotFoundException(request.Id);
             product.Name = request.Name;
             product.Category = request.Category;
             product.Description = request.Description;

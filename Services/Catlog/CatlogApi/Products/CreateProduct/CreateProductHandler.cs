@@ -9,11 +9,11 @@
 
     public record CreateProductResult(Guid Id);
 
-    internal class CreateProductHandler(IDocumentSession session, ILogger<CreateProductHandler> logger) : ICommandHandler<CreateProductCommand, CreateProductResult>
+    internal class CreateProductHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
-            logger.LogInformation("Create Product Handler");
+            // logger.LogInformation("Create Product Handler");
             ////validate command
             //var validationResult = await validator.ValidateAsync(command, cancellationToken);
             //if (!validationResult.IsValid)
