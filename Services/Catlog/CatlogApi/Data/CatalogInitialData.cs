@@ -8,10 +8,7 @@ namespace CatlogApi.Data
         {
             var session = store.LightweightSession();
             if (await session.Query<Product>().AnyAsync(token: cancellation))
-            {
                 return;
-            }
-
             var product = new Product
             {
                 Id = Guid.NewGuid(),
@@ -22,9 +19,7 @@ namespace CatlogApi.Data
             };
             session.Store<Product>(GetProduct());
             await session.SaveChangesAsync(cancellation);
-
         }
-
         private static IEnumerable<Product> GetProduct() => new List<Product>
         {
             new Product
