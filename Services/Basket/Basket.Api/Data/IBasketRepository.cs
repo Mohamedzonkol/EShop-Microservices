@@ -1,6 +1,6 @@
 ﻿namespace Basket.Api.Data
 {
-    public class IBasketRepository
+    public interface IBasketRepository
     {
     }
 }

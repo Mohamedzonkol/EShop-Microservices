@@ -12,6 +12,7 @@
     <Folder Include="Basket\StoreBasket\" />
     <Folder Include="DTOS\" />
     <Folder Include="Excrptions\" />
+    <Folder Include="GrpcServices\" />
   </ItemGroup>
 
 </Project>
