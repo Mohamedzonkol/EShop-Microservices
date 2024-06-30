@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Basket\" />
+    <Folder Include="Models\" />
+    <Folder Include="DTOS\" />
+    <Folder Include="Excrptions\" />
+  </ItemGroup>
+
 </Project>
