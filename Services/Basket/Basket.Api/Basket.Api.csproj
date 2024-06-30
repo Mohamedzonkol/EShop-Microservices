@@ -10,7 +10,6 @@
     <Folder Include="Basket\GetBasket\" />
     <Folder Include="Basket\DeleteBasket\" />
     <Folder Include="Basket\StoreBasket\" />
-    <Folder Include="Data\" />
     <Folder Include="DTOS\" />
     <Folder Include="Excrptions\" />
   </ItemGroup>
