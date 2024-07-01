@@ -8,7 +8,9 @@ namespace Basket.Api.Basket.GetBasket
     {
         public async Task<GetBasketResult> Handle(GetBasketQuery request, CancellationToken cancellationToken)
         {
-            return new GetBasketResult(new ShoppingCart("Sunny"));
+            var basket = await basketRepository.GetBasket(request.userName);
+            return new GetBasketResult(basket);
+
         }
     }
 
