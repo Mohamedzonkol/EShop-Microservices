@@ -31,8 +31,8 @@ builder.Services.AddStackExchangeRedisCache(options =>
 });
 
 builder.Services.AddHealthChecks()
-    .AddNpgSql(builder.Configuration.GetConnectionString("DefaultConnection")!);
-//  .AddRedis(builder.Configuration.GetConnectionString("Redis")!);
+    .AddNpgSql(builder.Configuration.GetConnectionString("DefaultConnection")!)
+    .AddRedis(builder.Configuration.GetConnectionString("Redis")!);
 var app = builder.Build();
 //pipeline
 app.MapCarter();
