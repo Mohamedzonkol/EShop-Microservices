@@ -2,5 +2,5 @@
 
 namespace CatlogApi.Exceptions
 {
-    public class ProductNotFoundException(Guid id) : NotFoundException($"Product with id {id} was not found.");
+    public class ProductNotFoundException(string userName) : NotFoundException($"Basket for user {userName} is not found");
 }
