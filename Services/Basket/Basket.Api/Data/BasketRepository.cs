@@ -1,7 +1,4 @@
-﻿using Basket.Api.Excrptions;
-using Marten;
-
-namespace Basket.Api.Data
+﻿namespace Basket.Api.Data
 {
     public class BasketRepository(IDocumentSession session) : IBasketRepository
     {
