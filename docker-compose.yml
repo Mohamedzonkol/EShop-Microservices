@@ -4,6 +4,9 @@ version: '4.31.1'
 services:
   catalogdb:
     image: postgres
+  basketdb:
+    image: postgres
+
 
 
   catlogapi:
@@ -14,4 +17,5 @@ services:
 
 volumes:
   postgres_catalog:
+  postgres_basket:
 
