@@ -13,7 +13,7 @@ builder.Services.AddMediatR(config =>
 });
 
 var app = builder.Build();
-
+//pipeline
 app.MapCarter();
 
 app.Run();
