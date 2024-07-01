@@ -1,15 +1,19 @@
-namespace Basket.Api
+using BuildingBlocks.Behavior;
+using BuildingBlocks.Behavouir;
+
+var builder = WebApplication.CreateBuilder(args);
+//Add services to the container.
+builder.Services.AddCarter();
+
+builder.Services.AddMediatR(config =>
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
-            var app = builder.Build();
+    config.RegisterServicesFromAssembly(typeof(Program).Assembly);
+    config.AddOpenBehavior(typeof(ValidationBehavior<,>));
+    config.AddOpenBehavior(typeof(LoggingBehavior<,>));
+});
 
-            app.MapGet("/", () => "Hello World!");
+var app = builder.Build();
 
-            app.Run();
-        }
-    }
-}
+app.MapCarter();
+
+app.Run();
