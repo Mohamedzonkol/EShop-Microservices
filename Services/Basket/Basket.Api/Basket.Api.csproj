@@ -7,9 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Basket\GetBasket\" />
-    <Folder Include="Basket\DeleteBasket\" />
-    <Folder Include="Basket\StoreBasket\" />
     <Folder Include="DTOS\" />
     <Folder Include="Excrptions\" />
     <Folder Include="GrpcServices\" />
