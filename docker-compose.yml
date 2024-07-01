@@ -4,10 +4,12 @@ version: '4.31.1'
 services:
   catalogdb:
     image: postgres
+
   basketdb:
     image: postgres
 
-
+  destributedcache:
+    image: redis
 
   catlogapi:
     image: ${DOCKER_REGISTRY-}catlogapi
