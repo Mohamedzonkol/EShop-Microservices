@@ -5,7 +5,7 @@ package discount;
 // The discount service definition.
 service DiscountService {
   // Returns the discount for the given product.
-  rpc GetDiscount (GetDiscountRequest) returns (CoupounResponse);
+  rpc GetDiscount (GetDiscountRequest) returns (CouponResponse);
   rpc CreateDiscount (CreateDiscountRequest) returns (CouponResponse);
   rpc UpdateDiscount (UpdateDiscountRequest) returns (CouponResponse);
   rpc DeleteDiscount (DeleteDiscountRequest) returns (DeleteDiscountResponse);
