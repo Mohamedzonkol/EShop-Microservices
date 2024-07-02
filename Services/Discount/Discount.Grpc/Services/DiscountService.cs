@@ -1,6 +1,6 @@
 ﻿namespace Discount.Grpc.Services
 {
-    public class DiscountServices
+    public class DiscountService
     {
     }
 }
