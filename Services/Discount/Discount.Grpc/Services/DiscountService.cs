@@ -23,20 +23,40 @@ namespace Discount.Grpc.Services
             return couponResponse;
         }
 
-        public override Task<CouponResponse> CreateDiscount(CreateDiscountRequest request, ServerCallContext context)
+        public override async Task<CouponResponse> CreateDiscount(CreateDiscountRequest request, ServerCallContext context)
         {
-
-            return base.CreateDiscount(request, context);
+            var coupon = request.Adapt<Coupon>();
+            if (coupon is null)
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid Discount Request"));
+            else if (await dbContext.Coupons.AnyAsync(x => x.ProductName == coupon.ProductName))
+                throw new RpcException(new Status(StatusCode.AlreadyExists, $"Discount for {coupon.ProductName} already exists"));
+            dbContext.Coupons.Add(coupon);
+            await dbContext.SaveChangesAsync();
+            logger.LogInformation("Discount is successfully created. ProductName : {productName}", coupon.ProductName);
+            return coupon.Adapt<CouponResponse>();
         }
 
-        public override Task<CouponResponse> UpdateDiscount(UpdateDiscountRequest request, ServerCallContext context)
+        public override async Task<CouponResponse> UpdateDiscount(UpdateDiscountRequest request, ServerCallContext context)
         {
-            return base.UpdateDiscount(request, context);
+            var coupon = request.Adapt<Coupon>();
+            if (coupon is null)
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid Discount Request"));
+            dbContext.Coupons.Update(coupon);
+            await dbContext.SaveChangesAsync();
+            logger.LogInformation("Discount is successfully updated. ProductName : {productName}", coupon.ProductName);
+            return coupon.Adapt<CouponResponse>();
         }
 
-        public override Task<DeleteDiscountResponse> DeleteDiscount(DeleteDiscountRequest request, ServerCallContext context)
+        public override async Task<DeleteDiscountResponse> DeleteDiscount(DeleteDiscountRequest request, ServerCallContext context)
         {
-            return base.DeleteDiscount(request, context);
+            var coupon = await dbContext.Coupons.FirstOrDefaultAsync(x => x.ProductName == request.ProductName);
+            if (coupon is null)
+                throw new RpcException(new Status(StatusCode.NotFound, $"Discount for {request.ProductName} not found"));
+            dbContext.Coupons.Remove(coupon);
+            await dbContext.SaveChangesAsync();
+            logger.LogInformation("Discount is successfully deleted. ProductName : {productName}", request.ProductName);
+            return new DeleteDiscountResponse { Success = true };
+
         }
     }
 }
