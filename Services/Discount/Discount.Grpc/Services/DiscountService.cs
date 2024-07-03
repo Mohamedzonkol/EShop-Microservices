@@ -25,7 +25,7 @@ namespace Discount.Grpc.Services
 
         public override async Task<CouponResponse> CreateDiscount(CreateDiscountRequest request, ServerCallContext context)
         {
-            var coupon = request.Adapt<Coupon>();
+            var coupon = request.Coupon.Adapt<Coupon>();
             if (coupon is null)
                 throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid Discount Request"));
             else if (await dbContext.Coupons.AnyAsync(x => x.ProductName == coupon.ProductName))
@@ -33,18 +33,20 @@ namespace Discount.Grpc.Services
             dbContext.Coupons.Add(coupon);
             await dbContext.SaveChangesAsync();
             logger.LogInformation("Discount is successfully created. ProductName : {productName}", coupon.ProductName);
-            return coupon.Adapt<CouponResponse>();
+            var couponResponse = coupon.Adapt<CouponResponse>();
+            return couponResponse;
         }
 
         public override async Task<CouponResponse> UpdateDiscount(UpdateDiscountRequest request, ServerCallContext context)
         {
-            var coupon = request.Adapt<Coupon>();
+            var coupon = request.Coupon.Adapt<Coupon>();
             if (coupon is null)
                 throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid Discount Request"));
             dbContext.Coupons.Update(coupon);
             await dbContext.SaveChangesAsync();
             logger.LogInformation("Discount is successfully updated. ProductName : {productName}", coupon.ProductName);
-            return coupon.Adapt<CouponResponse>();
+            var couponResponse = coupon.Adapt<CouponResponse>();
+            return couponResponse;
         }
 
         public override async Task<DeleteDiscountResponse> DeleteDiscount(DeleteDiscountRequest request, ServerCallContext context)
