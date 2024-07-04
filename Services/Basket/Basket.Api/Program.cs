@@ -20,8 +20,14 @@ builder.Services.AddMediatR(config =>
 builder.Services.AddGrpcClient<DiscountService.DiscountServiceClient>(opt =>
 {
     opt.Address = new Uri(builder.Configuration["GrpcConfigs:DiscountUrl"] ?? string.Empty);
+}).ConfigurePrimaryHttpMessageHandler(() =>
+{
+    var handler = new HttpClientHandler();
+    // Return `true` to allow certificates that are untrusted/invalid
+    handler.ServerCertificateCustomValidationCallback =
+        HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+    return handler;
 });
-
 builder.Services.AddMarten(opts =>
 {
     opts.Connection(builder.Configuration.GetConnectionString("DefaultConnection")!);
