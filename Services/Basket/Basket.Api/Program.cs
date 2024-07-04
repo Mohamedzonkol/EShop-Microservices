@@ -2,6 +2,7 @@ using Basket.Api.Data;
 using BuildingBlocks.Behavior;
 using BuildingBlocks.Behavouir;
 using BuildingBlocks.Exceptions.Handler;
+using Discount.Grpc.Protos;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
@@ -14,6 +15,11 @@ builder.Services.AddMediatR(config =>
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
     config.AddOpenBehavior(typeof(ValidationBehavior<,>));
     config.AddOpenBehavior(typeof(LoggingBehavior<,>));
+});
+
+builder.Services.AddGrpcClient<DiscountService.DiscountServiceClient>(opt =>
+{
+    opt.Address = new Uri(builder.Configuration["GrpcConfigs:DiscountUrl"] ?? string.Empty);
 });
 
 builder.Services.AddMarten(opts =>
