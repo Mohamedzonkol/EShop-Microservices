@@ -1,4 +1,4 @@
-﻿namespace Ordering.Api.Models
+﻿namespace Ordering.Domin.Models
 {
     public class Order
     {
