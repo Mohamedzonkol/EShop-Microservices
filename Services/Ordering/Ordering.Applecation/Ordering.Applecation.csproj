@@ -14,4 +14,9 @@
     <Folder Include="Orders\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj" />
+    <ProjectReference Include="..\Ordering.Domin\Ordering.Domin.csproj" />
+  </ItemGroup>
+
 </Project>

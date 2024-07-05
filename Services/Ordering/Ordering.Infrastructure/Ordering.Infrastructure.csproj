@@ -10,4 +10,8 @@
     <Folder Include="Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ordering.Applecation\Ordering.Applecation.csproj" />
+  </ItemGroup>
+
 </Project>
