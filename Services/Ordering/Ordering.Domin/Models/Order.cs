@@ -1,4 +1,3 @@
-using Ordering.Domin.Events;
 
 namespace Ordering.Domin.Models
 {
