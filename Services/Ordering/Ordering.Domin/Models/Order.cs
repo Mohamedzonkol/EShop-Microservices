@@ -1,5 +1,3 @@
-using Ordering.Domin.ValueObject;
-
 namespace Ordering.Domin.Models
 {
     public class Order : Aggregate<Guid>
