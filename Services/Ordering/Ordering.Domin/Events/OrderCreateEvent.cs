@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ordering.Domin.Events
+﻿namespace Ordering.Domin.Events
 {
-    internal class OrderCreateEvent
-    {
-    }
+    public record OrderCreateEvent(Order order) : IDomainEvent;
 }
