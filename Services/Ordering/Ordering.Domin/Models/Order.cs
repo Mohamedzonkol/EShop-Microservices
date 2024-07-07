@@ -1,3 +1,5 @@
+using Ordering.Domin.Events;
+
 namespace Ordering.Domin.Models
 {
     public class Order : Aggregate<OrderId>
@@ -24,7 +26,31 @@ namespace Ordering.Domin.Models
                 Payment = payment,
                 Status = OrderStatus.Pending
             };
+            order.AddDomainEvent(new OrderCreateEvent(order));
             return order;
+        }
+        public void AddOrderItem(ProductId productId, decimal price, int quantity)
+        {
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(quantity);
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
+            _orderItems.Add(new OrderItem(Id, productId, price, quantity));
+        }
+        public void UpdateOrderItem(OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment, OrderStatus status)
+        {
+            OrderName = orderName;
+            ShippingAddress = shippingAddress;
+            BillingAddress = billingAddress;
+            Payment = payment;
+            Status = status;
+            AddDomainEvent(new OrderUpdateEvent(this));
+        }
+        public void RemoveOrderItem(OrderItemId orderItemId)
+        {
+            var orderItem = _orderItems.Find(x => x.Id == orderItemId);
+            if (orderItem is not null)
+            {
+                _orderItems.Remove(orderItem);
+            }
         }
     }
 }
