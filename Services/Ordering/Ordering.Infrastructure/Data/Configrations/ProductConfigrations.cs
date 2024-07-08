@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ordering.Infrastructure.Data.Configrations
+﻿namespace Ordering.Infrastructure.Data.Configrations
 {
-    internal class ProductConfigrations
+    public class ProductConfigrations : IEntityTypeConfiguration<Product>
     {
+        public void Configure(EntityTypeBuilder<Product> builder)
+        {
+            builder.HasKey(p => p.Id);
+
+            builder.Property(p => p.Id).HasConversion(
+                productId => productId.Value,
+                dbId => ProductId.Of(dbId));
+
+            builder.Property(p => p.Name).HasMaxLength(100).IsRequired();
+        }
     }
 }
