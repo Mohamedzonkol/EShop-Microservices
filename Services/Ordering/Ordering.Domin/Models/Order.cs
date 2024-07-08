@@ -12,7 +12,11 @@ namespace Ordering.Domin.Models
         public OrderStatus Status { get; private set; } = OrderStatus.Pending;
         public Payment Payment { get; private set; } = default!;
 
-        public decimal TotalPrice => OrderItems.Sum(x => x.Quantity * x.Price);
+        public decimal TotalPrice
+        {
+            get => OrderItems.Sum(x => x.Price * x.Quantity);
+            private set { }
+        }
         public static Order Create(OrderId id, CustomerId customerId, OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment)
         {
             var order = new Order

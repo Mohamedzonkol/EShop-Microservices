@@ -6,7 +6,7 @@
         {
             services.AddDbContext<AppDbContext>((s, options) =>
             {
-                options.AddInterceptors(s.GetService<ISaveChangesInterceptor>()!);
+                // options.AddInterceptors(s.GetService<ISaveChangesInterceptor>()!);
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
 
             });
