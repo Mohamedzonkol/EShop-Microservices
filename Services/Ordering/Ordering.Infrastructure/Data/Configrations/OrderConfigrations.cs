@@ -45,7 +45,7 @@
                     paymentBuilder.Property(p => p.PaymentMethod);
                 });
             builder.Property(o => o.Status)
-                .HasDefaultValue(OrderStatus.Draft)
+                .HasDefaultValue(OrderStatus.Pending)
                 .HasConversion(
                     s => s.ToString(),
                     dbStatus => (OrderStatus)Enum.Parse(typeof(OrderStatus), dbStatus));
