@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ordering.Infrastructure.Configrations
+namespace Ordering.Infrastructure.Data.Configrations
 {
     internal class CustomerConfigrations
     {
