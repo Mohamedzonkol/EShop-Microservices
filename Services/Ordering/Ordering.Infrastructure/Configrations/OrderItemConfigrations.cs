@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ordering.Infrastructure.Data.Extenstions
+namespace Ordering.Infrastructure.Configrations
 {
-    internal class DatabaseExtenstions
+    internal class OrderItemConfigrations
     {
     }
 }

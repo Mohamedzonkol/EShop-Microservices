@@ -3,5 +3,6 @@
     public record CustomerId
     {
         public Guid Value { get; }
+
     }
 }
