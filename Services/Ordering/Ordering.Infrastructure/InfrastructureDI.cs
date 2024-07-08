@@ -4,7 +4,12 @@
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<AppDbContext>((s, options) =>
+            {
+                options.AddInterceptors(s.GetService<ISaveChangesInterceptor>()!);
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+
+            });
             return services;
         }
     }
