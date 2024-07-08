@@ -10,6 +10,9 @@ services:
 
   destributedcache:
     image: redis
+  
+  orderdb:
+    image: mcr.microsoft.com/mssql/server
 
   catlogapi:
     image: ${DOCKER_REGISTRY-}catlogapi
