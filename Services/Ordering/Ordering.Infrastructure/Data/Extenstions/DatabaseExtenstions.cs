@@ -17,8 +17,8 @@ namespace Ordering.Infrastructure.Data.Extenstions
             await seedCustomerAsync(context);
             await SeedOrdersWithItemsAsync(context);
             await SeedProductAsync(context);
-
         }
+
         private static async Task seedCustomerAsync(AppDbContext context)
         {
             if (!await context.Customers.AnyAsync())
@@ -27,6 +27,7 @@ namespace Ordering.Infrastructure.Data.Extenstions
                 await context.SaveChangesAsync();
             }
         }
+
         private static async Task SeedProductAsync(AppDbContext context)
         {
             if (!await context.Products.AnyAsync())
@@ -35,6 +36,7 @@ namespace Ordering.Infrastructure.Data.Extenstions
                 await context.SaveChangesAsync();
             }
         }
+
         private static async Task SeedOrdersWithItemsAsync(AppDbContext context)
         {
             if (!await context.Orders.AnyAsync())

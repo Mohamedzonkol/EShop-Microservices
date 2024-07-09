@@ -1,6 +1,4 @@
-﻿
-
-namespace Ordering.Applecation
+﻿namespace Ordering.Applecation
 {
     public static class ApplicationDI
     {

@@ -3,7 +3,7 @@
     public interface IDomainEvent : INotification
     {
         Guid EventId => Guid.NewGuid();
-        DateTime OccurredOn => DateTime.UtcNow;
+        DateTime OccurredOn => DateTime.Now;
         public string? EventName => GetType().AssemblyQualifiedName;
     }
 }

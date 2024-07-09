@@ -10,4 +10,3 @@ global using Ordering.Domin.Enums;
 global using Ordering.Domin.Models;
 global using Ordering.Domin.ValueObject;
 global using Ordering.Infrastructure.Data;
-

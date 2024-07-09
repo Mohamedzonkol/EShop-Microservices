@@ -1,4 +1,3 @@
-
 namespace Ordering.Domin.Models
 {
     public class Order : Aggregate<OrderId>
@@ -17,6 +16,7 @@ namespace Ordering.Domin.Models
             get => OrderItems.Sum(x => x.Price * x.Quantity);
             private set { }
         }
+
         public static Order Create(OrderId id, CustomerId customerId, OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment)
         {
             var order = new Order
@@ -32,12 +32,14 @@ namespace Ordering.Domin.Models
             order.AddDomainEvent(new OrderCreateEvent(order));
             return order;
         }
+
         public void AddOrderItem(ProductId productId, decimal price, int quantity)
         {
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(quantity);
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
             _orderItems.Add(new OrderItem(Id, productId, quantity, price));
         }
+
         public void UpdateOrderItem(OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment, OrderStatus status)
         {
             OrderName = orderName;
@@ -47,6 +49,7 @@ namespace Ordering.Domin.Models
             Status = status;
             AddDomainEvent(new OrderUpdateEvent(this));
         }
+
         public void RemoveOrderItem(OrderItemId orderItemId)
         {
             var orderItem = _orderItems.Find(x => x.Id == orderItemId);

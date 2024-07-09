@@ -9,6 +9,7 @@
         {
             _domainEvents.Add(eventItem);
         }
+
         public IDomainEvent[] ClearDomainEvents()
         {
             IDomainEvent[] events = _domainEvents.ToArray();

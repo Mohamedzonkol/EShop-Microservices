@@ -25,14 +25,14 @@
                 if (entry.State == EntityState.Added)
                 {
                     entry.Entity.CreatedBy = "mehmet";
-                    entry.Entity.CreatedAt = DateTime.UtcNow;
+                    entry.Entity.CreatedAt = DateTime.Now;
                 }
 
                 if (entry.State == EntityState.Added || entry.State == EntityState.Modified ||
                     entry.HasChangedOwnedEntities())
                 {
                     entry.Entity.UpdatedBy = "mehmet";
-                    entry.Entity.UpdatedAt = DateTime.UtcNow;
+                    entry.Entity.UpdatedAt = DateTime.Now;
                 }
             }
         }

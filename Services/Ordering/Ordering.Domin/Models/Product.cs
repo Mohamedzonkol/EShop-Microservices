@@ -4,6 +4,7 @@
     {
         public string Name { get; private set; } = default!;
         public decimal Price { get; private set; }
+
         public static Product Create(ProductId id, string name, decimal price)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(name);

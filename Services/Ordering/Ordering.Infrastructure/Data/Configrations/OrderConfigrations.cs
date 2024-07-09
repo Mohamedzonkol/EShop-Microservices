@@ -1,5 +1,5 @@
-﻿
-namespace Ordering.Infrastructure.Data.Configurations;
+﻿namespace Ordering.Infrastructure.Data.Configurations;
+
 public class OrderConfigrations : IEntityTypeConfiguration<Order>
 {
     public void Configure(EntityTypeBuilder<Order> builder)

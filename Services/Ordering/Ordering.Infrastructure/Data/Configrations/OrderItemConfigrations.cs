@@ -17,7 +17,6 @@
             builder.Property(oi => oi.Quantity).IsRequired();
 
             builder.Property(oi => oi.Price).IsRequired();
-
         }
     }
 }
