@@ -8,5 +8,9 @@ builder.Services.AddInfrastructureServices(builder.Configuration).AddApplication
 var app = builder.Build();
 
 app.UseApiServices();
+if (app.Environment.IsDevelopment())
+{
+    await app.InitializeDatabase();
+}
 
 app.Run();

@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Builder;
 
 namespace Ordering.Infrastructure.Data.Extenstions
 {
-    internal class DatabaseExtenstions
+    public static class DatabaseExtenstions
     {
+        public static async Task InitializeDatabase(this WebApplication app)
+        {
+            using var scope = app.Services.CreateScope();
+            var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            await context.Database.MigrateAsync();
+
+        }
     }
 }
