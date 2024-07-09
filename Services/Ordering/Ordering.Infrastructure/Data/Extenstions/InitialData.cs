@@ -30,12 +30,11 @@
                     "Istanbul", "38050");
                 var address2 = Address.Of("john", "doe", "john@gmail.com", "Broadway No:1", "England", "Nottingham",
                     "08050");
-                var address3 = Address.Of("jane", "doe", "mo.Essayed", "Broadway No:1", "England", "Nottingham",
-                    "08050");
+                // var address3 = Address.Of("jane", "doe", "mo.Essayed", "Broadway No:1", "England", "Nottingham" "08050");
 
                 var payment1 = Payment.Of("mehmet", "5555555555554444", "12/28", "355", 1);
                 var payment2 = Payment.Of("john", "8885555555554444", "06/30", "222", 2);
-                var payment3 = Payment.Of("jane", "1115555555554444", "06/30", "111", 3);
+                // var payment3 = Payment.Of("jane", "1115555555554444", "06/30", "111", 3);
 
                 var order1 = Order.Create(
                     OrderId.Of(Guid.NewGuid()),

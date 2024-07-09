@@ -8,7 +8,7 @@ namespace Ordering.Infrastructure.Data.Extenstions
         {
             using var scope = app.Services.CreateScope();
             var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-            await context.Database.MigrateAsync();
+            context.Database.MigrateAsync().GetAwaiter().GetResult();
             await SeedAsync(context);
         }
 

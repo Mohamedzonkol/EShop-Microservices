@@ -36,7 +36,7 @@ namespace Ordering.Domin.Models
         {
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(quantity);
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
-            _orderItems.Add(new OrderItem(Id, productId, price, quantity));
+            _orderItems.Add(new OrderItem(Id, productId, quantity, price));
         }
         public void UpdateOrderItem(OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment, OrderStatus status)
         {
