@@ -89,7 +89,7 @@ public class OrderConfigrations : IEntityTypeConfiguration<Order>
         builder.ComplexProperty(
                o => o.Payment, paymentBuilder =>
                {
-                   paymentBuilder.Property(p => p.CardHolderName)
+                   paymentBuilder.Property(p => p.CardName)
                        .HasMaxLength(50);
 
                    paymentBuilder.Property(p => p.CardNumber)

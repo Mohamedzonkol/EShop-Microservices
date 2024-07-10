@@ -15,8 +15,9 @@ namespace Ordering.Infrastructure.Data.Extenstions
         private static async Task SeedAsync(AppDbContext context)
         {
             await seedCustomerAsync(context);
-            await SeedOrdersWithItemsAsync(context);
             await SeedProductAsync(context);
+            await SeedOrdersWithItemsAsync(context);
+
         }
 
         private static async Task seedCustomerAsync(AppDbContext context)

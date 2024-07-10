@@ -2,7 +2,7 @@
 {
     public class Payment
     {
-        public string? CardHolderName { get; } = default!;
+        public string? CardName { get; } = default!;
         public string CardNumber { get; } = default!;
         public string Expiration { get; } = default!;
         public string CVV { get; } = default!;
@@ -14,7 +14,7 @@
 
         private Payment(string cardName, string cardNumber, string expiration, string cvv, int paymentMethod)
         {
-            CardHolderName = cardName;
+            CardName = cardName;
             CardNumber = cardNumber;
             Expiration = expiration;
             CVV = cvv;

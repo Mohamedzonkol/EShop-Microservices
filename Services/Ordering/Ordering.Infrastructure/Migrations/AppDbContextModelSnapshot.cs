@@ -4,20 +4,17 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Ordering.Infrastructure.Data;
 
 #nullable disable
 
-namespace Ordering.Infrastructure.Data.Migrations
+namespace Ordering.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240708135740_inital")]
-    partial class inital
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,7 +102,6 @@ namespace Ordering.Infrastructure.Data.Migrations
                                 .HasColumnType("nvarchar(50)");
 
                             b1.Property<string>("EmailAddress")
-                                .IsRequired()
                                 .HasMaxLength(50)
                                 .HasColumnType("nvarchar(50)");
 
@@ -121,13 +117,13 @@ namespace Ordering.Infrastructure.Data.Migrations
 
                             b1.Property<string>("State")
                                 .IsRequired()
-                                .HasMaxLength(20)
-                                .HasColumnType("nvarchar(20)");
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)");
 
                             b1.Property<string>("ZipCode")
                                 .IsRequired()
-                                .HasMaxLength(8)
-                                .HasColumnType("nvarchar(8)");
+                                .HasMaxLength(5)
+                                .HasColumnType("nvarchar(5)");
                         });
 
                     b.ComplexProperty<Dictionary<string, object>>("OrderName", "Ordering.Domin.Models.Order.OrderName#OrderName", b1 =>
@@ -150,8 +146,7 @@ namespace Ordering.Infrastructure.Data.Migrations
                                 .HasMaxLength(3)
                                 .HasColumnType("nvarchar(3)");
 
-                            b1.Property<string>("CardHolderName")
-                                .IsRequired()
+                            b1.Property<string>("CardName")
                                 .HasMaxLength(50)
                                 .HasColumnType("nvarchar(50)");
 
@@ -160,9 +155,10 @@ namespace Ordering.Infrastructure.Data.Migrations
                                 .HasMaxLength(24)
                                 .HasColumnType("nvarchar(24)");
 
-                            b1.Property<DateTime>("Expiration")
+                            b1.Property<string>("Expiration")
+                                .IsRequired()
                                 .HasMaxLength(10)
-                                .HasColumnType("datetime2");
+                                .HasColumnType("nvarchar(10)");
 
                             b1.Property<int>("PaymentMethod")
                                 .HasColumnType("int");
@@ -179,13 +175,12 @@ namespace Ordering.Infrastructure.Data.Migrations
 
                             b1.Property<string>("Country")
                                 .IsRequired()
-                                .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)");
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)");
 
                             b1.Property<string>("EmailAddress")
-                                .IsRequired()
-                                .HasMaxLength(60)
-                                .HasColumnType("nvarchar(60)");
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)");
 
                             b1.Property<string>("FirstName")
                                 .IsRequired()
@@ -199,13 +194,13 @@ namespace Ordering.Infrastructure.Data.Migrations
 
                             b1.Property<string>("State")
                                 .IsRequired()
-                                .HasMaxLength(20)
-                                .HasColumnType("nvarchar(20)");
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)");
 
                             b1.Property<string>("ZipCode")
                                 .IsRequired()
-                                .HasMaxLength(8)
-                                .HasColumnType("nvarchar(8)");
+                                .HasMaxLength(5)
+                                .HasColumnType("nvarchar(5)");
                         });
 
                     b.HasKey("Id");
@@ -229,9 +224,6 @@ namespace Ordering.Infrastructure.Data.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("OrderId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -250,8 +242,6 @@ namespace Ordering.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
-
-                    b.HasIndex("OrderId1");
 
                     b.HasIndex("ProductId");
 
@@ -300,14 +290,10 @@ namespace Ordering.Infrastructure.Data.Migrations
             modelBuilder.Entity("Ordering.Domin.Models.OrderItem", b =>
                 {
                     b.HasOne("Ordering.Domin.Models.Order", null)
-                        .WithMany()
+                        .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Ordering.Domin.Models.Order", null)
-                        .WithMany("OrderItems")
-                        .HasForeignKey("OrderId1");
 
                     b.HasOne("Ordering.Domin.Models.Product", null)
                         .WithMany()

@@ -50,7 +50,7 @@ services:
       - SA_PASSWORD=Mo123456
     restart: always
     ports:
-      - "1433:1433"
+      - "1422:1433"
   basket.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

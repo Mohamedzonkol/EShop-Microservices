@@ -33,7 +33,7 @@
                 // var address3 = Address.Of("jane", "doe", "mo.Essayed", "Broadway No:1", "England", "Nottingham" "08050");
 
                 var payment1 = Payment.Of("mehmet", "5555555555554444", "12/28", "355", 1);
-                var payment2 = Payment.Of("john", "8885555555554444", "06/30", "222", 2);
+                var payment2 = Payment.Of("john", "8885555555554444", "06/30", "222", 1);
                 // var payment3 = Payment.Of("jane", "1115555555554444", "06/30", "111", 3);
 
                 var order1 = Order.Create(
@@ -43,9 +43,9 @@
                     shippingAddress: address1,
                     billingAddress: address1,
                     payment1);
-                order1.AddOrderItem(ProductId.Of(new Guid("5334c996-8457-4cf0-815c-ed2b77c4ff61")), 2, 500);
-                order1.AddOrderItem(ProductId.Of(new Guid("c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914")), 1, 400);
-                order1.AddOrderItem(ProductId.Of(new Guid("4f136e9f-ff8c-4c1f-9a33-d12f689bdab8")), 1, 650);
+                order1.Add(ProductId.Of(new Guid("5334c996-8457-4cf0-815c-ed2b77c4ff61")), 2, 500);
+                order1.Add(ProductId.Of(new Guid("c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914")), 1, 400);
+                order1.Add(ProductId.Of(new Guid("4f136e9f-ff8c-4c1f-9a33-d12f689bdab8")), 1, 650);
 
                 var order2 = Order.Create(
                     OrderId.Of(Guid.NewGuid()),
@@ -54,9 +54,9 @@
                     shippingAddress: address2,
                     billingAddress: address2,
                     payment2);
-                order2.AddOrderItem(ProductId.Of(new Guid("4f136e9f-ff8c-4c1f-9a33-d12f689bdab8")), 1, 650);
-                order2.AddOrderItem(ProductId.Of(new Guid("6ec1297b-ec0a-4aa1-be25-6726e3b51a27")), 2, 450);
-                order2.AddOrderItem(ProductId.Of(new Guid("f3b3b3b3-3b3b-3b3b-3b3b-3b3b3b3b3b3b")), 1, 300);
+                order2.Add(ProductId.Of(new Guid("4f136e9f-ff8c-4c1f-9a33-d12f689bdab8")), 1, 650);
+                order2.Add(ProductId.Of(new Guid("6ec1297b-ec0a-4aa1-be25-6726e3b51a27")), 2, 450);
+                order2.Add(ProductId.Of(new Guid("f3b3b3b3-3b3b-3b3b-3b3b-3b3b3b3b3b3b")), 1, 300);
 
                 return new List<Order> { order1, order2 };
             }
