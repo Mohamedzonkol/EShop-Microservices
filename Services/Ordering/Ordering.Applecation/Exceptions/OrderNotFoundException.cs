@@ -1,6 +1,6 @@
-﻿namespace Ordering.Applecation.Exceptions
+﻿using BuildingBlocks.Exception;
+
+namespace Ordering.Applecation.Exceptions
 {
-    internal class OrderNotFoundException
-    {
-    }
+    public class OrderNotFoundException(Guid id) : NotFoundException("Order", id);
 }
