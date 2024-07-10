@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Orders\EventHanlder\Domain\" />
     <Folder Include="Orders\EventHanlder\Integration\" />
-    <Folder Include="Orders\Queries\GetOrderByName\" />
     <Folder Include="Orders\Queries\GetOrderByCustomer\" />
   </ItemGroup>
 
