@@ -1,7 +1,4 @@
-﻿using FluentValidation;
-
-namespace Ordering.Applecation.Orders.Commands.CreateOrder;
-
+﻿namespace Ordering.Applecation.Orders.Commands.CreateOrder;
 public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
 {
     public CreateOrderCommandValidator()

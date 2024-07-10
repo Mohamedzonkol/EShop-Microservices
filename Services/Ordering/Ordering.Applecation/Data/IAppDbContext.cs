@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Ordering.Domin.Models;
-
-namespace Ordering.Applecation.Data
+﻿namespace Ordering.Applecation.Data
 {
     public interface IAppDbContext
     {
