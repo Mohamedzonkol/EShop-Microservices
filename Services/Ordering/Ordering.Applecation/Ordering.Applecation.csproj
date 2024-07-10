@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Extentions\" />
     <Folder Include="Orders\EventHanlder\Domain\" />
     <Folder Include="Orders\EventHanlder\Integration\" />
     <Folder Include="Orders\Queries\GetOrderByName\" />
