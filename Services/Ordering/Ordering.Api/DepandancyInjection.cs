@@ -8,16 +8,15 @@ namespace Ordering.Api
     {
         public static IServiceCollection AddApiServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // services.AddCarter();
-
+            services.AddCarter();
             services.AddExceptionHandler<CustomExceptionHandler>();
             services.AddHealthChecks()
-                .AddSqlServer(configuration.GetConnectionString("Database")!);
+                .AddSqlServer(configuration.GetConnectionString("DefaultConnection")!);
             return services;
         }
-
         public static WebApplication UseApiServices(this WebApplication app)
         {
+            app.MapCarter();
             app.UseExceptionHandler(options => { });
             app.UseHealthChecks("/health",
                 new HealthCheckOptions
