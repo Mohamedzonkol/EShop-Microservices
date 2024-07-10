@@ -2,7 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 //add services to DI
 
-builder.Services.AddApplicationServices(/*builder.Configuration*/)
+builder.Services.AddApplicationServices(builder.Configuration)
     .AddInfrastructureServices(builder.Configuration)
     .AddApiServices(builder.Configuration);
 
