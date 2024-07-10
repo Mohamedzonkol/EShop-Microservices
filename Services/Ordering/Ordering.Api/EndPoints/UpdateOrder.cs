@@ -1,10 +1,4 @@
-﻿using Carter;
-using Mapster;
-using MediatR;
-using Ordering.Applecation.Dtos;
-using Ordering.Applecation.Orders.Commands.UpdateOrder;
-
-namespace Ordering.Api.EndPoints
+﻿namespace Ordering.Api.EndPoints
 {
     public record UpdateOrderRequest(OrderDto Order);
     public record UpdateOrderResponse(bool IsSuccess);

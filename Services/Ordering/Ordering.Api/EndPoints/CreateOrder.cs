@@ -1,10 +1,4 @@
-﻿using Carter;
-using Mapster;
-using MediatR;
-using Ordering.Applecation.Dtos;
-using Ordering.Applecation.Orders.Commands.CreateOrder;
-
-namespace Ordering.Api.EndPoints
+﻿namespace Ordering.Api.EndPoints
 {
     public record CreateOrderRequest(OrderDto Order);
     public record CreateOrderResponse(Guid Id);

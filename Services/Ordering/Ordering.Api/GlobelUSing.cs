@@ -1,4 +1,10 @@
-﻿global using Ordering.Api;
+﻿global using Carter;
+global using Mapster;
+global using MediatR;
+global using Ordering.Api;
 global using Ordering.Applecation;
+global using Ordering.Applecation.Dtos;
+global using Ordering.Applecation.Orders.Commands.CreateOrder;
+global using Ordering.Applecation.Orders.Commands.UpdateOrder;
 global using Ordering.Infrastructure;
 global using Ordering.Infrastructure.Data.Extenstions;
