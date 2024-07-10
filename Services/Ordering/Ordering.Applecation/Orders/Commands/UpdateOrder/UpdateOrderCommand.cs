@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ordering.Applecation.Orders.Commands.UpdateOrder
+﻿namespace Ordering.Applecation.Orders.Commands.UpdateOrder
 {
-    internal class UpdateOrderCommand
-    {
-    }
+    public record UpdateOrderCommand(OrderDto Order)
+        : ICommand<UpdateOrderResult>;
+
+    public record UpdateOrderResult(bool IsSuccess);
 }
