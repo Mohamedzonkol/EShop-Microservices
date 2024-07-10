@@ -1,6 +1,7 @@
-﻿namespace Ordering.Applecation.Orders.Commands.CreateOrder
+﻿using BuildingBlocks.CQRS;
+
+namespace Ordering.Applecation.Orders.Commands.CreateOrder
 {
-    internal class CreateOrderCommand
-    {
-    }
+    public record CreateOrderCommand(OrderDto Order) : ICommand<CreateOrderResult>;
+    public record CreateOrderResult(Guid Id);
 }
