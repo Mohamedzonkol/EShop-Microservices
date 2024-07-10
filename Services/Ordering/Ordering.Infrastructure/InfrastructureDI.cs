@@ -1,4 +1,5 @@
-﻿using Ordering.Infrastructure.Data.Interceptors;
+﻿using Ordering.Applecation.Data;
+using Ordering.Infrastructure.Data.Interceptors;
 
 namespace Ordering.Infrastructure
 {
@@ -13,7 +14,7 @@ namespace Ordering.Infrastructure
                 options.AddInterceptors(s.GetService<ISaveChangesInterceptor>()!);
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
-            //   services.AddScoped<IAppDbContext,AppDbContext>();
+            services.AddScoped<IAppDbContext, AppDbContext>();
             return services;
         }
     }

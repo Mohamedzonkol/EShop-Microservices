@@ -7,11 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="Dtos\" />
     <Folder Include="Extentions\" />
-    <Folder Include="Exceptions\" />
-    <Folder Include="Orders\" />
+    <Folder Include="Orders\Commands\DeleteOrder\" />
+    <Folder Include="Orders\Commands\UpdateOrder\" />
+    <Folder Include="Orders\EventHanlder\Domain\" />
+    <Folder Include="Orders\EventHanlder\Integration\" />
+    <Folder Include="Orders\Queries\GetOrder\" />
+    <Folder Include="Orders\Queries\GetOrderByName\" />
+    <Folder Include="Orders\Queries\GetOrderByCustomer\" />
   </ItemGroup>
 
   <ItemGroup>
