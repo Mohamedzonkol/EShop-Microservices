@@ -1,6 +1,4 @@
-﻿using Ordering.Domin.ValueObject;
-
-namespace Ordering.Applecation.Orders.Commands.CreateOrder
+﻿namespace Ordering.Applecation.Orders.Commands.CreateOrder
 {
     public class CreateOrderHandler(IAppDbContext context) :
         ICommandHandler<CreateOrderCommand, CreateOrderResult>
