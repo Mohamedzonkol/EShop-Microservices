@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace Ordering.Applecation.Orders.EventHanlder.Domain
 {
@@ -7,7 +7,7 @@ namespace Ordering.Applecation.Orders.EventHanlder.Domain
         public Task Handle(OrderUpdateEvent notification, CancellationToken cancellationToken)
         {
             logger.LogInformation("Domain Event handled: {DomainEvent}", notification.GetType().Name);
-            return Task.CompletedTask;
+            return Task.CompletedTask; 
         }
     }
 }
