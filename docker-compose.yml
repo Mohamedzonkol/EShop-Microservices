@@ -14,14 +14,16 @@ services:
   orderdb:
     image: mcr.microsoft.com/mssql/server
 
+  messagebroker:
+    image: rabbitmq:management
+
   catlogapi:
     image: ${DOCKER_REGISTRY-}catlogapi
     build:
       context: .
       dockerfile: Services/Catlog/CatlogApi/Dockerfile
   
-  messagebroker:
-    image: rabbitmq:management
+
 
   basket.api:
     image: ${DOCKER_REGISTRY-}basketapi
