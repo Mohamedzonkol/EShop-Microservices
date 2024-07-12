@@ -19,6 +19,9 @@ services:
     build:
       context: .
       dockerfile: Services/Catlog/CatlogApi/Dockerfile
+  
+  messagebroker:
+    image: rabbitmq:management
 
   basket.api:
     image: ${DOCKER_REGISTRY-}basketapi
