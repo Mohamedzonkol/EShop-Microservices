@@ -1,13 +1,12 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace Ordering.Applecation.Orders.EventHanlder.Domain
+﻿namespace Ordering.Applecation.Orders.EventHanlder.Domain
 {
-    public class OrderCreatedEventHanddler(ILogger<OrderCreatedEventHanddler> logger) : INotificationHandler<OrderCreateEvent>
+    public class OrderCreatedEventHanddler(IPublishEndpoint publishEndpoint, ILogger<OrderCreatedEventHanddler> logger) : INotificationHandler<OrderCreateEvent>
     {
-        public Task Handle(OrderCreateEvent notification, CancellationToken cancellationToken)
+        public async Task Handle(OrderCreateEvent notification, CancellationToken cancellationToken)
         {
             logger.LogInformation("Domain Event handled: {DomainEvent}", notification.GetType().Name);
-            return Task.CompletedTask;
+            var orderCreatedIntegrationEvent = notification.order.ToOrderDto();
+            await publishEndpoint.Publish(orderCreatedIntegrationEvent, cancellationToken);
         }
     }
 }
