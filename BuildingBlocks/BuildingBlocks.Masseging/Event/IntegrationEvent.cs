@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BuildingBlocks.Masseging.Event
+﻿namespace BuildingBlocks.Masseging.Event
 {
-    internal class IntegrationEvent
+    public record IntegrationEvent
     {
+        public Guid EventId { get; init; }
+        public DateTime CreationDate => DateTime.Now;
+        public string EventName => GetType().AssemblyQualifiedName!;
     }
 }
