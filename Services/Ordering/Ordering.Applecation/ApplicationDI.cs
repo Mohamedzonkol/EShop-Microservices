@@ -1,5 +1,4 @@
 ﻿
-
 namespace Ordering.Applecation
 {
     public static class ApplicationDI
@@ -13,7 +12,7 @@ namespace Ordering.Applecation
                 config.AddOpenBehavior(typeof(LoggingBehavior<,>));
             });
 
-            // services.AddFeatureManagement();
+            services.AddFeatureManagement();
             services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
 
             return services;
