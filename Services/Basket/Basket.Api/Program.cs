@@ -2,6 +2,7 @@ using Basket.Api.Data;
 using BuildingBlocks.Behavior;
 using BuildingBlocks.Behavouir;
 using BuildingBlocks.Exceptions.Handler;
+using BuildingBlocks.Masseging.MassTransit;
 using Discount.Grpc.Protos;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -41,6 +42,8 @@ builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = builder.Configuration.GetConnectionString("Redis")!;
 });
+
+builder.Services.AddMessageBroker(builder.Configuration);
 
 builder.Services.AddHealthChecks()
     .AddNpgSql(builder.Configuration.GetConnectionString("DefaultConnection")!)
