@@ -1,6 +1,10 @@
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+//Services
 
-app.MapGet("/", () => "Hello World!");
+
+var app = builder.Build();
+//pipeline
+
+
 
 app.Run();
